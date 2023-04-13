@@ -1,6 +1,6 @@
 # Spring-Security-Implementation
 
-- This repo implements user authentication and authorisation using spring security. 
+- This repo implements user authentication and authorisation using java spring security. 
 - Bootstrapped with spring framework from (spring.io)[https://start.spring.io/].
 - 
 ## Software Architecture
