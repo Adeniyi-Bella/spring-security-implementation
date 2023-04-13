@@ -13,6 +13,7 @@ import java.io.IOException;
 
 // fires everytime users makes a request
 @Component
+// create a constructor using any final field
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
@@ -21,6 +22,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
+        // extract header from request body
+        final String authHeader = request.getHeader("Authorization");
+        final String jwt;
+        final String userEmail;
+        // Beare token starts with Bearer 
+        if (authHeader == null ||!authHeader.startsWith("Bearer ")) {
+            // pass to the next filter
+            filterChain.doFilter(request, response);
+            return;
+        }
+        // count from after Bearer
+        jwt = authHeader.substring(7);
+/*
+        userEmail = jwtService.extractUsername(jwt);
+*/
 
     }
 }
